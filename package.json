@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "pdfreader": "^3.0.2"
+    "next": "^14.2.7",
+    "pdfreader": "^3.0.2",
+    "react-hook-form": "^7.52.1",
+    "zod": "^3.23.8"
   }
 }

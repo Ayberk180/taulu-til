@@ -56,5 +56,12 @@ export const validateRequest = cache(async(): Promise<{user:User; session:Sessio
 declare module "lucia" {
 	interface Register {
 		Lucia: typeof lucia;
+		DatabaseUserAttributes: DatabaseUserAttributes;
+	}
+	interface DatabaseUserAttributes {
+		username: string,
+		hasAdmin: boolean,
+		email: string,
+		hashed_password: string,
 	}
 }

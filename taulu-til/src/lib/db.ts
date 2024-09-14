@@ -15,16 +15,16 @@ export const UserCollection = db.collection("users") as Collection<UserDoc>;
 export const SessionCollection = db.collection("sessions") as Collection<SessionDoc>;
 
  interface UserDoc {
-	_id: string;
-	username: string;
+	_id:string;
+	username:string;
 	email: string;
 	hashed_password: string;
 	hasAdmin:boolean;
 }
 
 interface SessionDoc {
-	_id: string;
-	expires_at: Date;
-	user_id: string;
-	hasAdmin:boolean;
+	_id:string;
+	expires_at:Date;
+	user_id:string;
+	// hasAdmin:boolean;
 }

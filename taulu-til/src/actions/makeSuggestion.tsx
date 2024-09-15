@@ -1,10 +1,5 @@
 "use server";
 import { User } from "lucia";
-import * as dotenv from "dotenv";
-import { useSearchParams } from "next/navigation";
-import { validateRequest } from "@/lib/auth";
-import { error } from "console";
-import { useSession } from "@/app/SessionContext";
 import { ttDB } from "@/lib/db";
 
 

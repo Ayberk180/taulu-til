@@ -11,11 +11,10 @@ import { redirect } from 'next/navigation';
 import React from "react";
 
 
-let user = await validateRequest()  
-console.log('user', user)     
 
 
 export const Search = async ({ searchString }: { searchString: string }) => {
+  
   // console.log("searchString '", searchString.replace(/\s/g,''),"'");
 
     const res = await ttDB

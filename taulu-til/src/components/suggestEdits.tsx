@@ -115,7 +115,7 @@ export default function SuggestEdits({ word }: { word: WithId<Document> }) {
               </div>
             </div>
             <DialogFooter>
-              <Button type="submit" onClick={() => clickHandler()}>Save changes</Button>
+              <Button type="submit" onClick={() => clickHandler()}>Send Message</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>   

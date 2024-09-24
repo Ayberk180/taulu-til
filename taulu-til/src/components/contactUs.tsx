@@ -28,7 +28,7 @@ import { sendNote } from "@/actions/sendNote";
 
 export default function ContactUs() {
   const { user } = useSession();
-
+  const [open, setOpen] = useState(false);
   const [email, setEmail] = useState<string>();
   const [name, setName] = useState<string>('');
   const [message, setMessage] = useState<string>();
@@ -40,6 +40,7 @@ export default function ContactUs() {
             const rsp = await sendNote({user:user,email:email!, name:name, message:message!});
             if (rsp?.isErr === 0 ) {
               toast.success(`Suggestion received for: ${rsp.message}`);
+              setOpen(false);
             } else {
               throw new Error(rsp?.message)
             }
@@ -54,7 +55,7 @@ export default function ContactUs() {
   }
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button  className="bg-green-600 text-white hover:bg-green-700">Get in touch with us</Button>
           </DialogTrigger>

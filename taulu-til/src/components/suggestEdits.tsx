@@ -20,8 +20,6 @@ import { Label } from "@/components/ui/label";
 import { makeSuggestion } from "@/actions/makeSuggestion";
 import type { WithId, Document } from "mongodb";
 import { Textarea } from "./ui/textarea";
-import { useFormState } from "react-dom";
-
 // const searchParams = useSearchParams();
 // const word = searchParams.get("query")?.toString();
 
@@ -29,10 +27,11 @@ export default function SuggestEdits({ word }: { word: WithId<Document> }) {
   const { user } = useSession();
   let trExample = word!.example.replaceAll("'", '"');
   let trDef = JSON.parse(word!.definition.replaceAll("'", '"'));
-  let engDef = JSON.parse(word!.englishDefinition.replaceAll("'", '"').replace("don\"t","don\'t").replace("~",` ${word.word} `));
+  let engDef = JSON.parse(word!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"').replace("~",` ${word.word} `));
   const [newTrDef, setNewTrDef] = useState<string>(trDef);
   const [newExample, setNewExample] = useState<string>(trExample);
   const [newEnDef, setNewEnDef] = useState<string>(engDef);
+  const [open, setOpen] = useState(false);
   console.log(user);
   
   // const initialState = {
@@ -45,6 +44,7 @@ export default function SuggestEdits({ word }: { word: WithId<Document> }) {
       const rsp = await makeSuggestion({word:word.word,wordid:word.id,user:user,definition:newTrDef, example:newExample, englishDefinition:newEnDef});
       if (rsp?.isErr === 0 ) {
         toast.success(`Suggestion received for: ${rsp.message}`);
+        setOpen(false);
       } else {
         throw new Error(rsp?.message)
       }
@@ -68,7 +68,7 @@ export default function SuggestEdits({ word }: { word: WithId<Document> }) {
   // };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button variant="outline">Suggest Changes</Button>
           </DialogTrigger>

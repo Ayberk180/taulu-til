@@ -1,0 +1,8 @@
+mongo
+ayberk180
+xda8k9waxD5CkZoR
+AKMongo0225
+
+mongoimport --uri mongodb+srv://ayberk180:AKMongo0225@taucluster.jvhsspk.mongodb.net/TauluTil --collection=tauluDictionary --file DictFF.csv --headerline --type csv
+
+db['taulu-dictionary'].updateMany({},{ $rename: { 'English Definition': 'englishDef', 'English Keywords': 'englishKeywords' }});

@@ -18,10 +18,13 @@ export default function page({
 }: {
   searchParams?: {
     query?: string;
+    lang?: string;
   };
 }) {
   const query = searchParams?.query || " ";
+  const lang = searchParams?.query || "kch";
   console.log("query", query);
+  console.log("lang", lang);
   return (
     <div className="overflow-hidden">
       <section className="bg-green-600 w-full h-1/6 overflow-visible">
@@ -33,7 +36,7 @@ export default function page({
               </div>
               <div className="mx-auto justify-center items-center w-full gap-1 overflow-visible">
                 <SearchField />
-                <Search searchString={query} />
+                {/* <Search searchString={query} /> */}
 
                 {/* <SearchComponent  /> */}
               </div>

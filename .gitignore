@@ -3,4 +3,5 @@
 /karacay_malkar_turkce_sozluk.pdf
 /mongo.txt
 /node_modules
-/data
+/data\
+.env

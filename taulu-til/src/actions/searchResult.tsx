@@ -13,9 +13,11 @@ import React from "react";
 
 
 
-export const Search = async ({ searchString }: { searchString: string }) => {
+export const Search = async ({ searchString,lang }: { searchString: string, lang:string }) => {
   
   // console.log("searchString '", searchString.replace(/\s/g,''),"'");
+
+  const path = (lang==="kch") ? "word": (lang==="tr") ? "keywords": "englishKeywords" ;
 
     const res = await ttDB
       .collection("tauluDictionary")
@@ -27,18 +29,8 @@ export const Search = async ({ searchString }: { searchString: string }) => {
                 {
                   autocomplete: {
                     query: searchString,
-                    path: "word",
-                    score: {
-                      boost: {
-                        value: 9,
-                      },
-                    },
-                  },
-                },
-                {
-                  autocomplete: {
-                    query: searchString,
-                    path: "keywords",
+                    // path: "word",
+                    path: path,
                     score: {
                       boost: {
                         value: 5,
@@ -46,6 +38,28 @@ export const Search = async ({ searchString }: { searchString: string }) => {
                     },
                   },
                 },
+                // {
+                //   autocomplete: {
+                //     query: searchString,
+                //     path: "keywords",
+                //     score: {
+                //       boost: {
+                //         value: 5,
+                //       },
+                //     },
+                //   },
+                // },
+                // {
+                //   autocomplete: {
+                //     query: searchString,
+                //     path: "englishKeywords",
+                //     score: {
+                //       boost: {
+                //         value: 8,
+                //       },
+                //     },
+                //   },
+                // },
               ],
             },
           },
@@ -65,7 +79,7 @@ export const Search = async ({ searchString }: { searchString: string }) => {
             <div>
               <Link className="w-full" href={'definition?word='+res.word}>
                 <div key={res.id} className="text-sm items-start flex">
-                  <p className="font-bold">{res.word}</p> : {res.definition.replace(/[\[\]']+/g,'')}
+                  <p className="font-bold">{res.word}</p> : {res.definition.replace(/[\[\]']+/g,'')}  : {res.englishDefinition.replace(/[\[\]']+/g,'')}
                 </div>
               </Link>
             <Separator/>

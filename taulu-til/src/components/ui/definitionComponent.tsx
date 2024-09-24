@@ -29,8 +29,8 @@ export default async function DefinitionCard({ word }: { word: string }) {
   let id = res?.id
   let str = res!.example.replaceAll("'", '"').replaceAll("~",` ${word} `);
   let def = JSON.parse(res!.definition.replaceAll("'", '"'));
-  // console.log(res!.englishDefinition.replaceAll("'", '"').replace('don\"t','don\'t'))
-  let engDef = JSON.parse(res!.englishDefinition.replaceAll("'", '"').replace("don\"t","don\'t"));
+  // console.log(res!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"'))
+  let engDef = JSON.parse(res!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"'));
 
   // let json = str.replace(/[^ \[\]]+/g, '"$&"').replace(/ +/g, ",");
   console.log(str);

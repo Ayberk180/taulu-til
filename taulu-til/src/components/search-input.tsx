@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { debounce } from "lodash";
@@ -15,8 +15,9 @@ import {
 } from "./ui/select";
 
 interface SearchFormProps {
-  initialQuery?: string;
-  initialFilter?: string;
+  initialQuery?: string
+  initialFilter?: string
+  searchParams?: { [key: string]: string | string[] | undefined }
 }
 
 export default function SearchForm({
@@ -24,21 +25,32 @@ export default function SearchForm({
   initialFilter = "kch",
 }: SearchFormProps) {
   const router = useRouter();
+  const currentSearchParams = useSearchParams()
   const [query, setQuery] = useState(initialQuery);
   const [filter, setFilter] = useState(initialFilter);
   const [isInputFocused, setIsInputFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const params = new URLSearchParams();
+  
 
   const debouncedSearch = useCallback(
     debounce((newQuery: string, newFilter: string) => {
-      const params = new URLSearchParams();
-      if (newQuery) params.set("query", newQuery);
-      params.set("filter", newFilter);
-      if (isInputFocused) params.set("isInputFocused", "true");
-      router.push(`?${params.toString()}`, { scroll: false });
+      const params = new URLSearchParams(currentSearchParams.toString())
+      if (newQuery) {
+        params.set('query', newQuery)
+      } else {
+        params.delete('query')
+      }
+      params.set('filter', newFilter)
+      if (isInputFocused) {
+        params.set('isInputFocused', 'true')
+      } else {
+        params.delete('isInputFocused')
+      }
+      router.push(`?${params.toString()}`, { scroll: false })
     }, 300),
-    [router, isInputFocused]
-  );
+    [router, isInputFocused, currentSearchParams]
+  )
 
   useEffect(() => {
     debouncedSearch(query, filter);

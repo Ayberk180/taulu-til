@@ -12,19 +12,13 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import ContactUs from "@/components/contactUs";
+import SearchBar from "@/components/searchbar";
 
 export default function page({
   searchParams,
 }: {
-  searchParams?: {
-    query?: string;
-    lang?: string;
-  };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const query = searchParams?.query || " ";
-  const lang = searchParams?.query || "kch";
-  console.log("query", query);
-  console.log("lang", lang);
   return (
     <div className="overflow-hidden">
       <section className="bg-green-600 w-full h-1/6 overflow-visible">
@@ -35,8 +29,9 @@ export default function page({
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t via-slate-50/50 from-slate-50 h-28" />
               </div>
               <div className="mx-auto justify-center items-center w-full gap-1 overflow-visible">
-                <SearchField />
+                {/* <SearchField /> */}
                 {/* <Search searchString={query} /> */}
+                <SearchBar searchParams={searchParams} />
 
                 {/* <SearchComponent  /> */}
               </div>
@@ -67,11 +62,21 @@ export default function page({
                 broader audience. Linked below are the resources we used to
                 bring you TauluTil
               </p>
-              <Link href={'http://www.elbrusoid.org/'} className="text-blue-600 underline">Elbrusoid</Link>
-              <Link href={'http://www.yilmaznevruz.net/'} className=" text-blue-600 underline">The works of Yilmaz Nevruz</Link>
+              <Link
+                href={"http://www.elbrusoid.org/"}
+                className="text-blue-600 underline"
+              >
+                Elbrusoid
+              </Link>
+              <Link
+                href={"http://www.yilmaznevruz.net/"}
+                className=" text-blue-600 underline"
+              >
+                The works of Yilmaz Nevruz
+              </Link>
             </CardContent>
             <CardFooter className="mx-auto">
-              <ContactUs/>
+              <ContactUs />
             </CardFooter>
           </Card>
         </MaxWidthWrapper>

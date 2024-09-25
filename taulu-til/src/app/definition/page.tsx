@@ -1,14 +1,18 @@
 import { Search } from "@/actions/searchResult";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import SearchBar from "@/components/searchbar";
 import DefinitionCard from "@/components/ui/definitionComponent";
 import SearchField from "@/components/ui/search";
 import { useSearchParams } from "next/navigation";
 import React from "react";
 
+
+
 export default function Page({
   searchParams,
 }: {
   searchParams?: {
+    [key: string]: string | string[] | undefined,
     query?: string;
     word?: string;
   };
@@ -22,8 +26,10 @@ export default function Page({
         <section className="bg-green-600 w-full h-1/6 overflow-visible">
           <MaxWidthWrapper className="pb-10 pt-10 lg:grid sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-10 xl:pt-10 lg:pb-24">
             <div className="w-full h-full">
-              <SearchField />
-              <Search searchString={query} />
+              {/* <SearchField />
+              <Search searchString={query} /> */}
+                              <SearchBar searchParams={searchParams} />
+
             </div>
           </MaxWidthWrapper>
         </section>

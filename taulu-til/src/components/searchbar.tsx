@@ -7,7 +7,7 @@ import searchtest from "@/actions/searchtest";
 export default async function SearchBar({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined },word?: string;
 }) {
   const query =
     typeof searchParams?.query === "string" ? searchParams.query : "";
@@ -18,7 +18,7 @@ export default async function SearchBar({
 
   return (
     <div className="w-full mx-auto relative">
-        <SearchForm initialQuery={query} initialFilter={filter} />
+        <SearchForm initialQuery={query} initialFilter={filter} searchParams={searchParams} />
         <Suspense fallback={<div>Loading...</div>}>
           <SearchResults results={results} />
         </Suspense>

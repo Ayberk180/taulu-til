@@ -10,7 +10,7 @@ export default function CallToAction() {
   console.log("testing", user);
   return (
     <div>
-      {user != null ? (
+      {user == null ? (
         <div>
           <Card className="">
             <CardHeader>

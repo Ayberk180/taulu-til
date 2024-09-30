@@ -24,7 +24,7 @@ export default async function DefinitionCard({ word }: { word: string }) {
   const queryWord = word;
   console.log("Definition query", queryWord);
 
-  const res = await ttDB.collection("tauluDictionary").findOne({ word });
+  const res = JSON.parse(JSON.stringify(await ttDB.collection("tauluDictionary").findOne({ word })));
 
   let id = res?.id
   let str = res!.example.replaceAll("'", '"').replaceAll("~",` ${word} `);

@@ -34,7 +34,7 @@ export async function signin(currentState:{message:string}, formData: FormData){
 		};
 	}
 
-	console.log(existingUser)
+	// console.log(existingUser)
 	const validPassword = await verify(existingUser.hashed_password, password, {
 		memoryCost: 19456,
 		timeCost: 2

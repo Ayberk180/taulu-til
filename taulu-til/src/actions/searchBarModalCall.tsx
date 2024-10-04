@@ -1,10 +1,9 @@
-import { ttDB } from '@/lib/db';
-import React from 'react'
+'use server'
 
-export default async function searchtest(query: string, filter: string) {
+import { ttDB } from "@/lib/db";
 
-
-    const path = (filter === 'kch') ? 'word' : (filter === 'tr') ? 'keywords' : 'englishKeywords'
+export async function performSearch(query: string, filter: string) {
+  const path = (filter === 'kch') ? 'word' : (filter === 'tr') ? 'keywords' : 'englishKeywords'
   
     const res = await ttDB
     .collection("tauluDictionary")
@@ -33,7 +32,7 @@ export default async function searchtest(query: string, filter: string) {
     ])
     .toArray();
 
-    console.log(res)
+    // console.log(res)
     // return [`${filter} Result 1 for ${query}`, `${filter} Result 2 for ${query}`, `${filter} Result 3 for ${query}`]
     return JSON.parse(JSON.stringify(res))
 }

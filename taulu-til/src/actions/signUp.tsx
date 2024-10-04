@@ -42,7 +42,7 @@ export async function signup(currentState:{message:string}, formData: FormData) 
         }
     const password = formData.get('password');
     const confpassword = formData.get('confpassword');
-    console.log('password', password, 'confpassword', confpassword)
+    // console.log('password', password, 'confpassword', confpassword)
     if (password !== confpassword){
         return {
             message: "Passwords do not match"
@@ -63,7 +63,7 @@ export async function signup(currentState:{message:string}, formData: FormData) 
     });
     const userId = generateIdFromEntropySize(15);
 
-    console.log(formData)
+    // console.log(formData)
     try {
         UserCollection.insertOne({
             _id: userId,

@@ -1,24 +1,17 @@
-import { Search } from "@/actions/searchResult";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import SearchField from "@/components/ui/search";
 import React from "react";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
 import ContactUs from "@/components/contactUs";
-import SearchBar from "@/components/searchbar";
+import SearchBarModal from "@/components/searchBarModal";
 
-export default function page({
-  searchParams,
-}: {
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) {
+export default function page() {
   return (
     <div className="overflow-hidden">
       <section className="bg-green-600 w-full h-1/6 overflow-visible">
@@ -29,18 +22,8 @@ export default function page({
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t via-slate-50/50 from-slate-50 h-28" />
               </div>
               <div className="mx-auto justify-center items-center w-full gap-1 overflow-visible">
-                {/* <SearchField /> */}
-                {/* <Search searchString={query} /> */}
-                <SearchBar searchParams={searchParams} />
-
-                {/* <SearchComponent  /> */}
+              <SearchBarModal/>
               </div>
-              {/* <h1 className="relative w-full tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
-                    Learn the Karachay Language{" "}
-                    <span className="bg-green-600 px-2 text-white">
-                      Coming Soon
-                    </span>{" "}
-                  </h1> */}
             </div>
           </div>
         </MaxWidthWrapper>

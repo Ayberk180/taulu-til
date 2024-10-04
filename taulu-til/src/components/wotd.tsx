@@ -23,15 +23,15 @@ export default async function WordOfTheDay() {
   let wordId = Number(lst[differenceInDays]);
 
   const res = await ttDB.collection("tauluDictionary").findOne({ id: wordId });
-  let word = res?.word
+  let word = res?.word;
   let def = JSON.parse(res!.definition.replaceAll("'", '"'));
   let engDef = JSON.parse(
     res!.englishDefinition.replaceAll("'", '"').replace('don"t', "don't")
   );
 
   return (
-    <Link href={`/definition?word=`+word}>
-      <Card className="w-full h-full hover:shadow-md">
+    <Link href={`/definition?word=` + word}>
+      <Card className="w-full hover:shadow-md h-full">
         <CardHeader>
           <CardTitle className="text-center">Word of the Day</CardTitle>
         </CardHeader>
@@ -40,9 +40,11 @@ export default async function WordOfTheDay() {
         </CardContent>
         <CardFooter className="flex flex-col">
           <CardDescription className="w-full pb-4">
-            English: {engDef}
+            <span className="font-semibold">English:</span> {engDef}
           </CardDescription>
-          <CardDescription className="w-full">Turkish: {def}</CardDescription>
+          <CardDescription className="w-full">
+            <span className="font-semibold">Turkish:</span> {def}
+          </CardDescription>
         </CardFooter>
       </Card>
     </Link>

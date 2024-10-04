@@ -32,7 +32,7 @@ export default function ContactUs() {
   const [email, setEmail] = useState<string>();
   const [name, setName] = useState<string>('');
   const [message, setMessage] = useState<string>();
-  console.log(user);
+  // console.log(user);
 
   async function clickHandler() {
     try {

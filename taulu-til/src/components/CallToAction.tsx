@@ -7,7 +7,7 @@ import { useSession } from "@/app/SessionContext";
 
 export default function CallToAction() {
   const { user } = useSession();
-  console.log("testing", user);
+  // console.log("testing", user);
   return (
     <div>
       {user == null ? (

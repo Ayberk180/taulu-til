@@ -32,7 +32,7 @@ export default function SuggestEdits({ word }: { word: WithId<Document> }) {
   const [newExample, setNewExample] = useState<string>(trExample);
   const [newEnDef, setNewEnDef] = useState<string>(engDef);
   const [open, setOpen] = useState(false);
-  console.log(user);
+  // console.log(user);
   
   // const initialState = {
   //   message:''

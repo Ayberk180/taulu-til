@@ -1,8 +1,5 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import Image from "next/image";
 import dotenv from "dotenv";
-import SearchField from "@/components/ui/search";
-import { Search } from "@/actions/searchResult";
 import {
   Card,
   CardContent,
@@ -12,32 +9,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import WordOfTheDay from "@/components/wotd";
 import CallToAction from "@/components/CallToAction";
-import SearchBar from "@/components/searchbar";
+import SearchBarModal from "@/components/searchBarModal";
+import MakeARequest from "./request/page";
 
 dotenv.config();
 
-export default function Home(
-  //   {
-  //   searchParams,
-  //   language,
-  // }: {
-  //   searchParams?: {
-  //     query?: string;
-  //   };
-  //   language?: { lang?: string };
-  // }
-
-  // { searchParams }: { searchParams: { query?: string; filter?: string } }
-
-  {
-    searchParams,
-  }: {
-    searchParams?: { [key: string]: string | string[] | undefined };
-  }
-) {
+export default function Home() {
   return (
     <div className="overflow-visible">
       <section className="bg-green-600 w-full h-1/6">
@@ -48,11 +27,7 @@ export default function Home(
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t via-slate-50/50 from-slate-50 h-28" />
               </div>
               <div className="mx-auto justify-center items-center w-full gap-1">
-                {/* <SearchField />
-                <Search searchString={query} lang={lang} /> */}
-                {/* <SearchBar/> */}
-                <SearchBar searchParams={searchParams} />
-                {/* <SearchComponent  /> */}
+                <SearchBarModal />
               </div>
               {/* <h1 className="relative w-full tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
                     Learn the Karachay Language{" "}
@@ -64,18 +39,18 @@ export default function Home(
           </div>
         </MaxWidthWrapper>
       </section>
-      <section className="">
+      <section>
         <MaxWidthWrapper>
           <div className="pt-16">
             <CallToAction />
           </div>
-          <div className="grid md:grid-cols-3 gap-2 pt-2">
-            <div>
+          <div className="grid sm:grid-cols-1 sm:grid-rows-7 md:grid-cols-3 md:grid-rows-3 gap-2 pt-2">
+            <div className=" md:row-span-2">
               <WordOfTheDay />
             </div>
-            <div className="grid gap-2">
+            <div className="">
               <Link href="/dictionary">
-                <Card className="hover:shadow-md hover:shadow-gray-300">
+                <Card className="hover:shadow-md hover:shadow-gray-300 h-full">
                   <CardHeader>
                     <CardTitle>Dictionary</CardTitle>
                   </CardHeader>
@@ -87,8 +62,24 @@ export default function Home(
                   </CardContent>
                 </Card>
               </Link>
+            </div>
+            <div className=" md:col-start-3 md:row-start-2">
+                <Card className="hover:shadow-md hover:shadow-gray-300 h-full">
+                <MakeARequest/>
+                  {/* <CardHeader>
+                    <CardTitle>Request a Definition</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>
+                      Can't find a word you are looking for? Submit a request! 
+                    </CardDescription>
+                  </CardContent>
+                  <CardFooter></CardFooter> */}
+                </Card>
+            </div>
+            <div className="md:col-start-2 md:row-start-2">
               <Link href={`karacayCirla.pdf`} locale={false}>
-                <Card className="hover:shadow-md hover:shadow-gray-300">
+                <Card className="hover:shadow-md hover:shadow-gray-300 h-full">
                   <CardHeader>
                     <CardTitle>Songs</CardTitle>
                   </CardHeader>
@@ -101,9 +92,10 @@ export default function Home(
                 </Card>
               </Link>
             </div>
-            <div className="grid gap-2">
+            {/* <div className="col-start-2 row-start-3">5</div> */}
+            <div className="md:col-start-3 md:row-start-1">
               <Link href="/about">
-                <Card className="hover:shadow-md hover:shadow-gray-300">
+                <Card className="hover:shadow-md hover:shadow-gray-300 h-full">
                   <CardHeader>
                     <CardTitle>About Us</CardTitle>
                   </CardHeader>
@@ -115,8 +107,10 @@ export default function Home(
                   <CardFooter></CardFooter>
                 </Card>
               </Link>
+            </div>
+            <div className="md:col-start-1 md:row-start-3">
               <Link href="/about">
-                <Card className="hover:shadow-md hover:shadow-gray-300">
+                <Card className="hover:shadow-md hover:shadow-gray-300 h-full">
                   <CardHeader>
                     <CardTitle>Collections (Coming Soon!)</CardTitle>
                   </CardHeader>

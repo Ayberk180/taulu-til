@@ -24,6 +24,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SessionProvider value={session}>
+        <link rel="icon" href="tt-logo-color.png" sizes="any" />
           <div className="flex flex-col h-screen">
             <div className="sticky top-0 z-50">
               <Navbar />

@@ -22,7 +22,7 @@ import { ttDB } from "@/lib/db";
 
 export default async function DefinitionCard({ word }: { word: string }) {
   const queryWord = word;
-  console.log("Definition query", queryWord);
+  // console.log("Definition query", queryWord);
 
   const res = JSON.parse(JSON.stringify(await ttDB.collection("tauluDictionary").findOne({ word })));
 
@@ -33,9 +33,9 @@ export default async function DefinitionCard({ word }: { word: string }) {
   let engDef = JSON.parse(res!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"'));
 
   // let json = str.replace(/[^ \[\]]+/g, '"$&"').replace(/ +/g, ",");
-  console.log(str);
+  // console.log(str);
   let arr = JSON.parse(str);
-  console.log(arr);
+  // console.log(arr);
 
   // console.log(JSON.parse('[[" Calınıbalmak", " yalvarıp almak"], [" çırt kişigecalınmay aşın taşdan çığarıbüydegisin keçindiredi", " hiç kimseyeminnet etmeden"], [" aşını taştançıkararak ailesini geçindiriyor"], ["calınıb turmak", " yalvarıp durmak"], ["calınıb cavdan kalmazsa", "yalvararak düşmandankurtulamazsın (a-s)"]]'));
   return (

@@ -12,7 +12,7 @@ import { useSession } from "@/app/SessionContext";
 
 export default function SaveDefinition({ word,id }: { word: string, id:number }) {
   const { user } = useSession()
-    console.log(user)
+    // console.log(user)
   async function clickHandler() {
     // console.log("user", user);
 

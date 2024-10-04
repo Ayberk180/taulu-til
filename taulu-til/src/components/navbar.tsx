@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import MaxWidthWrapper from "./MaxWidthWrapper";
@@ -8,24 +8,36 @@ import { lucia, validateRequest } from "@/lib/auth";
 import { redirect } from "next/dist/server/api-utils";
 import { logoutAction } from "./logout-action";
 import { useSession } from "@/app/SessionContext";
+import Image from "next/image";
 
-const  Navbar =  () => {
-  const { user } =  useSession();
-  console.log("USER",user)
+const Navbar = () => {
+  const { user } = useSession();
+  // console.log("USER", user);
 
   // const user = await validateRequest();
-  if ( user != null) {
-    console.log(user);
+  if (user != null) {
+    // console.log(user);
   }
   const isAdmin = user?.hasAdmin;
-  console.log(isAdmin);
+  // console.log(isAdmin);
 
   return (
     <nav className="sticky z-[100] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
       <MaxWidthWrapper>
-        <div className="flex h-14 items-center justify-between border-b border-zinc-200">
-          <Link href="/" className="flex z-40 font-semibold">
-            Taulu<span className="text-green-600">Til</span>
+        <div className=" flex h-14 items-center justify-between border-b border-zinc-200">
+          <Link href="/" className="flex z-40  items-baseline font-semibold">
+            {/* <div className=" outline">
+            <Image
+              src="/favicon_package_v0.16/favicon-32x32.png" // Make sure to put "/" sign
+              alt=""
+              width={32}
+              height={32}
+            />
+              </div> */}
+            <div className="flex text-xl mx-2 ">
+              <p className="">Taulu</p>
+              <p className="text-green-600">Til</p>
+            </div>
           </Link>
           <div className="h-full flex items-center space-x-4">
             {user?.username ? (
@@ -47,16 +59,16 @@ const  Navbar =  () => {
               </>
             ) : (
               <>
-                
                 {/* <div className="h-8 w-px bg-zinc-200 hidden sm:block" /> */}
                 <Link
                   href="login"
                   // className={buttonVariants({size: "sm"})}
                   className=""
                 >
-                  <Button className= "bg-green-600 hover:bg-green-700">Log in/Sign up</Button>
+                  <Button className="bg-green-600 hover:bg-green-700">
+                    Log in/Sign up
+                  </Button>
                 </Link>
-
               </>
             )}
           </div>

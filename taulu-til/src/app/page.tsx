@@ -52,7 +52,7 @@ export default function Home() {
               <Link href="/dictionary">
                 <Card className="hover:shadow-md hover:shadow-gray-300 h-full">
                   <CardHeader>
-                    <CardTitle>Dictionary</CardTitle>
+                    <CardTitle className="text-green-800">Dictionary</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
@@ -66,22 +66,13 @@ export default function Home() {
             <div className=" md:col-start-3 md:row-start-2">
                 <Card className="hover:shadow-md hover:shadow-gray-300 h-full">
                 <MakeARequest/>
-                  {/* <CardHeader>
-                    <CardTitle>Request a Definition</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription>
-                      Can't find a word you are looking for? Submit a request! 
-                    </CardDescription>
-                  </CardContent>
-                  <CardFooter></CardFooter> */}
                 </Card>
             </div>
             <div className="md:col-start-2 md:row-start-2">
               <Link href={`karacayCirla.pdf`} locale={false}>
                 <Card className="hover:shadow-md hover:shadow-gray-300 h-full">
                   <CardHeader>
-                    <CardTitle>Songs</CardTitle>
+                    <CardTitle className="text-green-800">Songs</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
@@ -92,12 +83,27 @@ export default function Home() {
                 </Card>
               </Link>
             </div>
-            {/* <div className="col-start-2 row-start-3">5</div> */}
+            {/* In development */}
+            {/* <div className="md:col-start-1 md:row-start-3">
+              <Link href="/saved">
+                <Card className="hover:shadow-md hover:shadow-gray-300 h-full">
+                  <CardHeader>
+                    <CardTitle className="text-green-800">My Saved Words</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>
+                      Check out on the all words you have saved
+                    </CardDescription>
+                  </CardContent>
+                  <CardFooter></CardFooter>
+                </Card>
+              </Link>
+            </div> */}
             <div className="md:col-start-3 md:row-start-1">
               <Link href="/about">
                 <Card className="hover:shadow-md hover:shadow-gray-300 h-full">
                   <CardHeader>
-                    <CardTitle>About Us</CardTitle>
+                    <CardTitle className="text-green-800">About Us</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
@@ -108,11 +114,11 @@ export default function Home() {
                 </Card>
               </Link>
             </div>
-            <div className="md:col-start-1 md:row-start-3">
-              <Link href="/about">
+            <div className="md:col-start-2 md:row-start-3">
+              <Link href="/">
                 <Card className="hover:shadow-md hover:shadow-gray-300 h-full">
                   <CardHeader>
-                    <CardTitle>Collections (Coming Soon!)</CardTitle>
+                    <CardTitle className="text-green-800">Collections (Coming Soon!)</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription>
@@ -124,6 +130,7 @@ export default function Home() {
                 </Card>
               </Link>
             </div>
+            
           </div>
         </MaxWidthWrapper>
       </section>

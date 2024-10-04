@@ -59,7 +59,7 @@ export default function MakeARequest() {
       <DialogTrigger asChild>
         <div>
           <CardHeader>
-            <CardTitle>Request a Translation</CardTitle>
+            <CardTitle className="text-green-800">Request a Translation</CardTitle>
           </CardHeader>
           <CardContent>
             <CardDescription>

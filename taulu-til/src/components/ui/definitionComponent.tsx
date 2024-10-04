@@ -70,7 +70,7 @@ export default async function DefinitionCard({ word }: { word: string }) {
             </CardDescription>
           </CardContent>
           <CardFooter className="justify-end space-x-1">
-            <SaveDefinition word={queryWord} id={id}/>
+            {/* <SaveDefinition word={queryWord} id={id}/> */}
             <SuggestEdits word={res}/>
             
             <ShareButton />

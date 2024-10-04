@@ -16,7 +16,7 @@ export async function makeSave({
   // const word = searchParams.get("query")?.toString()
   try {
     if (user?.username != null) {
-      const res = await ttDB.collection("savedWords").insertOne({userid:user?.id, wordid:id});
+      const res = await ttDB.collection("savedWords").insertOne({userid:user?.id, wordid:id, word:word});
       return {
         isErr: 0,
         message: word,

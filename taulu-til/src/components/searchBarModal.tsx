@@ -139,11 +139,11 @@ export default function SearchBarModal() {
                       )}`}
                       className="block w-full text-left hover:bg-accent hover:text-accent-foreground p-2 rounded-md transition-colors"
                     >
-                      <div className="text-sm grid grid-cols-4 sm:grid-cols-3">
-                        <p className="font-bold flex text-md">{result.word}</p>
+                      <div className="text-sm grid grid-cols-3 md:grid-cols-4">
+                        <p className="font-bold flex text-md px-2">{result.word}</p>
                         <div className="col-span-2 ">
-                          <div className="flex"><p className="font-semibold whitespace-pre">Turkish: </p> {result.definition.replace(/[\[\]']+/g, "")}</div>
-                          <div className="flex"><p className="font-semibold whitespace-pre">English: </p> {result.englishDefinition.replace(/[\[\]']+/g, "")}</div>
+                          <div className="flex"><p className="font-semibold whitespace-pre">Turkish: </p> {(result.definition.replace(/[\[\]']+/g, "")).slice(0,50)}...</div>
+                          <div className="flex"><p className="font-semibold whitespace-pre">English: </p> {result.englishDefinition.replace(/[\[\]']+/g, "").slice(0,50)}...</div>
                         </div>
                       </div>
                     </Link>

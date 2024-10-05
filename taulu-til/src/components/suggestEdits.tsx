@@ -23,17 +23,17 @@ export default function SuggestEdits({ word }: { word: WithId<Document> }) {
   try{
     var trExample:string = word!.example.replaceAll("'", '"');
   } catch (e) {
-    var trExample = "['']"
+    var trExample = "['error']"
   }
   try{
     var trDef:string = JSON.parse(word!.definition.replaceAll("'", '"'));
   } catch (e) {
-    var trDef = "['']"
+    var trDef = "['error']"
   }
   try{
     var engDef:string = JSON.parse(word!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"').replace("~",` ${word.word} `));
   } catch(e) {
-    var engDef = "['']"
+    var engDef = "['error']"
   }
   const [newTrDef, setNewTrDef] = useState<string>(trDef);
   const [newExample, setNewExample] = useState<string>(trExample);
@@ -57,7 +57,7 @@ export default function SuggestEdits({ word }: { word: WithId<Document> }) {
       }
     } catch (e) {
       const error = e as Error;
-      toast(`An error occured: ${error.message}`);
+      toast.error(`An error occured: ${error.message}`);
       return;
     }
   }

@@ -32,7 +32,7 @@ export async function makeSuggestion(
         // message: formData.get("word"),
       };
     } else {
-      throw new Error("Must be signed in to edit words");
+      throw new Error("Must be signed in to suggest edits");
     }
   } catch (err: unknown) {
     if (err instanceof Error) {

@@ -22,10 +22,11 @@ import { ttDB } from "@/lib/db";
 
 export default async function DefinitionCard({ word }: { word: string }) {
   const queryWord = word;
+  console.log(word)
   // console.log("Definition query", queryWord);
   
-  const res = JSON.parse(JSON.stringify(await ttDB.collection("tauluDictionary").findOne({ word })));
-
+  const res = JSON.parse(JSON.stringify(await ttDB.collection("tauluDictionary").findOne({ id: Number(word)  })));
+console.log('RES', res)
   let id = res?.id
   // let str = '';
   // let def = '';
@@ -33,17 +34,17 @@ export default async function DefinitionCard({ word }: { word: string }) {
   try {
     var str:string = res!.example.replaceAll("'", '"').replaceAll("~",` ${word} `);
   } catch (e) {
-    var str = "['']"
+    var str = '[{"":"error"}]'
   }
   try {
     var def:string = JSON.parse(res!.definition.replaceAll("'", '"'));
   } catch (e) {
-    var def = "['']"
+    var def = '[{"":"error"}]'
   }
   try {
     var engDef:string = JSON.parse(res!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"'));
   } catch (e) {
-    var engDef = "['']"
+    var engDef = '[{"":"error"}]'
   }
 
   // let json = str.replace(/[^ \[\]]+/g, '"$&"').replace(/ +/g, ",");
@@ -51,7 +52,6 @@ export default async function DefinitionCard({ word }: { word: string }) {
   let arr = JSON.parse(str);
   // console.log(arr);
 
-  // console.log(JSON.parse('[[" Calınıbalmak", " yalvarıp almak"], [" çırt kişigecalınmay aşın taşdan çığarıbüydegisin keçindiredi", " hiç kimseyeminnet etmeden"], [" aşını taştançıkararak ailesini geçindiriyor"], ["calınıb turmak", " yalvarıp durmak"], ["calınıb cavdan kalmazsa", "yalvararak düşmandankurtulamazsın (a-s)"]]'));
   return (
     <div>
       {res ? (

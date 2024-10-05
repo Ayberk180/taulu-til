@@ -19,7 +19,7 @@ export default async function DictionaryAccordion() {
                   {(words).map((word) => {
                     if(word.word[0] == alphabet){
                       return(
-                          <Link href={'../definition?word='+word.word}>
+                          <Link href={'../definition?word='+word.id}>
                           <button className="text-blue-600 visited:text-purple-600 underline">{word.word}</button>
                           </Link>
                         )

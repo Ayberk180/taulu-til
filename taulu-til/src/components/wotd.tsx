@@ -30,7 +30,7 @@ export default async function WordOfTheDay() {
   );
 
   return (
-    <Link href={`/definition?word=` + word}>
+    <Link href={`/definition?word=` + wordId}>
       <Card className="w-full hover:shadow-md h-full flex flex-col justify-between">
         <CardHeader>
           <CardTitle className="text-center text-green-800">Word of the Day</CardTitle>

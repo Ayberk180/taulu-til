@@ -39,7 +39,7 @@ export default function ContactUs() {
         if (email) {
             const rsp = await sendNote({user:user,email:email!, name:name, message:message!});
             if (rsp?.isErr === 0 ) {
-              toast.success(`Suggestion received for: ${rsp.message}`);
+              toast.success(`Message Sent!`);
               setOpen(false);
             } else {
               throw new Error(rsp?.message)

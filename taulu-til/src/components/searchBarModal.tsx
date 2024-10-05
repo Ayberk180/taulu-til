@@ -135,7 +135,7 @@ export default function SearchBarModal() {
                   <li key={index} className="text-sm">
                     <Link
                       href={`/definition?word=${encodeURIComponent(
-                        result.word
+                        result.id
                       )}`}
                       className="block w-full text-left hover:bg-accent hover:text-accent-foreground p-2 rounded-md transition-colors"
                       onClick={() => setIsOpen(false)}

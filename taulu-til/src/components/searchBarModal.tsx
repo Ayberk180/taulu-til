@@ -138,6 +138,7 @@ export default function SearchBarModal() {
                         result.word
                       )}`}
                       className="block w-full text-left hover:bg-accent hover:text-accent-foreground p-2 rounded-md transition-colors"
+                      onClick={() => setIsOpen(false)}
                     >
                       <div className="text-sm grid grid-cols-3 md:grid-cols-4">
                         <p className="font-bold flex text-md px-2">{result.word}</p>

@@ -1,10 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
-import { User } from "lucia";
 import { toast } from "sonner";
-import { makeSave } from "../actions/makeSave";
-import { useSearchParams } from "next/navigation";
 import { useSession } from "@/app/SessionContext";
 import {
   Dialog,
@@ -15,19 +12,29 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { makeSuggestion } from "@/actions/makeSuggestion";
 import type { WithId, Document } from "mongodb";
 import { Textarea } from "./ui/textarea";
-// const searchParams = useSearchParams();
-// const word = searchParams.get("query")?.toString();
+
 
 export default function SuggestEdits({ word }: { word: WithId<Document> }) {
   const { user } = useSession();
-  let trExample = word!.example.replaceAll("'", '"');
-  let trDef = JSON.parse(word!.definition.replaceAll("'", '"'));
-  let engDef = JSON.parse(word!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"').replace("~",` ${word.word} `));
+  try{
+    var trExample:string = word!.example.replaceAll("'", '"');
+  } catch (e) {
+    var trExample = "['']"
+  }
+  try{
+    var trDef:string = JSON.parse(word!.definition.replaceAll("'", '"'));
+  } catch (e) {
+    var trDef = "['']"
+  }
+  try{
+    var engDef:string = JSON.parse(word!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"').replace("~",` ${word.word} `));
+  } catch(e) {
+    var engDef = "['']"
+  }
   const [newTrDef, setNewTrDef] = useState<string>(trDef);
   const [newExample, setNewExample] = useState<string>(trExample);
   const [newEnDef, setNewEnDef] = useState<string>(engDef);

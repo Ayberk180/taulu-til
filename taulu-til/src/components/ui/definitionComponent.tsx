@@ -23,14 +23,28 @@ import { ttDB } from "@/lib/db";
 export default async function DefinitionCard({ word }: { word: string }) {
   const queryWord = word;
   // console.log("Definition query", queryWord);
-
+  
   const res = JSON.parse(JSON.stringify(await ttDB.collection("tauluDictionary").findOne({ word })));
 
   let id = res?.id
-  let str = res!.example.replaceAll("'", '"').replaceAll("~",` ${word} `);
-  let def = JSON.parse(res!.definition.replaceAll("'", '"'));
-  // console.log(res!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"'))
-  let engDef = JSON.parse(res!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"'));
+  // let str = '';
+  // let def = '';
+  // let engDef = '';
+  try {
+    var str:string = res!.example.replaceAll("'", '"').replaceAll("~",` ${word} `);
+  } catch (e) {
+    var str = "['']"
+  }
+  try {
+    var def:string = JSON.parse(res!.definition.replaceAll("'", '"'));
+  } catch (e) {
+    var def = "['']"
+  }
+  try {
+    var engDef:string = JSON.parse(res!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"'));
+  } catch (e) {
+    var engDef = "['']"
+  }
 
   // let json = str.replace(/[^ \[\]]+/g, '"$&"').replace(/ +/g, ",");
   // console.log(str);

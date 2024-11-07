@@ -27,12 +27,12 @@ export default async function DefinitionCard({ word }: { word: string }) {
   
   const res = JSON.parse(JSON.stringify(await ttDB.collection("tauluDictionary").findOne({ id: Number(word)  })));
 console.log('RES', res)
-  let id = res?.id
+  // let id = res?.id
   // let str = '';
   // let def = '';
   // let engDef = '';
   try {
-    var str:string = res!.example.replaceAll("'", '"').replaceAll("~",` ${word} `);
+    var str:string = res!.example.replaceAll("'", '"').replaceAll("~",` ${res.word} `);
   } catch (e) {
     var str = '[{"":"error"}]'
   }
@@ -53,9 +53,9 @@ console.log('RES', res)
   // console.log(arr);
 
   return (
-    <div>
+    <div className="">
       {res ? (
-        <Card>
+        <Card className="h-full">
           <CardHeader>
             <CardTitle className="text-4xl">{res.word}</CardTitle>
           </CardHeader>

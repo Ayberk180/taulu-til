@@ -23,11 +23,19 @@ export default async function WordOfTheDay() {
   let wordId = Number(lst[differenceInDays]);
 
   const res = await ttDB.collection("tauluDictionary").findOne({ id: wordId });
-  let word = res?.word;
-  let def = JSON.parse(res!.definition.replaceAll("'", '"'));
-  let engDef = JSON.parse(
-    res!.englishDefinition.replaceAll("'", '"').replace('don"t', "don't")
-  );
+
+  const word = res?.word
+
+  try {
+    var def:string = JSON.parse(res!.definition.replaceAll("'", '"'));
+  } catch (e) {
+    var def = '[{"":"error"}]'
+  }
+  try {
+    var engDef:string = JSON.parse(res!.englishDefinition.replaceAll("don\'t","do not").replaceAll("'", '"'));
+  } catch (e) {
+    var engDef = '[{"":"error"}]'
+  }
 
   return (
     <Link href={`/definition?word=` + wordId}>

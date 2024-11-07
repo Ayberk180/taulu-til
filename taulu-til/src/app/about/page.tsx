@@ -40,7 +40,7 @@ export default function page() {
                 Karachay-Balkar language in hopes of increasing literacy among
                 its general population. The data and resources found throughout
                 this site was gathered from multiple free sources on the
-                internet. TauluTil is greatful for the efforts made by previous
+                internet. TauluTil is grateful for the efforts made by previous
                 generations that allowed us to provide more resources to reach a
                 broader audience. Linked below are the resources we used to
                 bring you TauluTil

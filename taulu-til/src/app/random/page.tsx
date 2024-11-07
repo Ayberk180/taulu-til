@@ -1,4 +1,3 @@
-"use client"
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import SearchBarModal from "@/components/searchBarModal";
 import DefinitionCard from "@/components/ui/definitionComponent";
@@ -30,9 +29,9 @@ export default function Page() {
           </MaxWidthWrapper>
         </section>
         <section className="pt-5">
-          <MaxWidthWrapper>
+          {/* <MaxWidthWrapper>
             <DefinitionCard word={getNum().toString()} />
-          </MaxWidthWrapper>
+          </MaxWidthWrapper> */}
         </section>
       </div>
     </div>
